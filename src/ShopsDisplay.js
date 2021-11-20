@@ -13,29 +13,33 @@ import axios from "axios";
 
 const ShopsDisplay = () => {
     const [shopDetails, setShopDetails] = useState([]);
+
     const baseURL = 'https://www.refugerestrooms.org/api/v1/restrooms/by_location';
+    
+    const chinatownParams =  {lat: '43.6509', lng: '-79.3972'};
+    const entertainmentParams = {lat: '43.6466', lng: '-79.3905'};
+    const bellwoodsParams = {lat: '43.6501', lng: '-79.4171'};
+    const annexParams = {lat: '43.6707', lng: '-79.3930'};
+    const riverdaleParams = {lat: '43.6790', lng: '-79.3449'};
+    const parkdaleParams = {lat: '43.6465', lng: '-79.4637'};
+
 
     // Axios call to get shop details in Chinatown
     useEffect(() => {
         axios({
             url: baseURL,
-            params: {
-                lat: '43.6509',
-                lng: '-79.3972'
-            },
+            params: chinatownParams,
         }).then((response) => {
             console.log(response.data)
             setShopDetails(response.data);
         });
     }, []);
+
     // Axios call to get shop details in Entertainment District
     useEffect(() => {
         axios({
             url: baseURL,
-            params: {
-                lat: '43.6466',
-                lng: '-79.3905'
-            },
+            params: entertainmentParams,
         }).then((response) => {
             console.log(response.data)
             setShopDetails(response.data);
@@ -46,10 +50,7 @@ const ShopsDisplay = () => {
     useEffect(() => {
         axios({
             url: baseURL,
-            params: {
-                lat: '43.6501',
-                lng: '-79.4171'
-            },
+            params: bellwoodsParams,
         }).then((response) => {
             console.log(response.data)
             setShopDetails(response.data);
@@ -60,10 +61,7 @@ const ShopsDisplay = () => {
     useEffect(() => {
     axios({
         url: baseURL,
-        params: {
-            lat: '43.6707',
-            lng: '-79.3930'
-        },
+        params: annexParams,
         }).then((response) => {
             console.log(response.data)
             setShopDetails(response.data);
@@ -74,10 +72,7 @@ const ShopsDisplay = () => {
     useEffect(() => {
         axios({
             url: baseURL,
-            params: {
-                lat: '43.6790',
-                lng: '-79.3449'
-            },
+            params: riverdaleParams,
         }).then((response) => {
             console.log(response.data)
             setShopDetails(response.data);
@@ -88,10 +83,7 @@ const ShopsDisplay = () => {
     useEffect(() => {
         axios({
             url: baseURL,
-            params: {
-                lat: '43.6465',
-                lng: '-79.4637'
-            },
+            params: parkdaleParams,
         }).then((response) => {
             console.log(response.data)
             setShopDetails(response.data);

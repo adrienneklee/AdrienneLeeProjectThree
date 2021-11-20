@@ -7,21 +7,59 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ShopsDisplay from './ShopsDisplay';
-import Chinatown from './Chinatown';
-
+import NeighbourhoodWCs from './NeighbourhoodWCs';
 
 function App() {
 
-  // const [safeSpaces, setSafeSpaces] = useState([]);
   const [safeSpace, setSafeSpaces] = useState([]);
-  const [safeChinatown, setChinatown] = useState([]);
-  const handleChinatown = () => {
-    // when the button is clicked map and display shop array
-    // setChinatown();
-    // Chinatown();
-    // <Chinatown />
+
+  // // Chinatown button
+  // const [chinatown, setChinatown] = useState([]);
+
+  // // Entertainment district button
+  // const [entertainment, setEntertainment] = useEffect([]);
+
+  // // Bellwoods button
+  // const [bellwoods, setBellwoods] = useEffect([]);
+
+  // //  Annex button
+  // const [annex, setAnnex] = useEffect([]);
+
+  // // Riverdale button
+  // const [riverdale, setRiverdale] = useEffect([]);
+
+  // // Parkdale button
+  // const [parkdale, setParkdale] = useEffect([]);
+
+   //  Event Handlers
+  const handleClick = () => {
+    console.log(`I was clicked`)
+    setSafeSpaces(!safeSpace);
+
 
   }
+
+  useEffect(() => {
+    if (safeSpace) {
+
+    }
+
+  })
+  const baseURL = 'https://www.refugerestrooms.org/api/v1/restrooms/by_location';
+
+  useEffect(() => {
+    axios({
+      url: baseURL,
+      params: {
+        lat: '43.6509',
+        lng: '-79.3972'
+      },
+    }).then((response) => {
+      console.log(response.data)
+      setSafeSpaces(response.data);
+    });
+  }, []);
+
 
   return (
     <>
@@ -33,26 +71,40 @@ function App() {
 
       <main>
 
-          <aside>
-            <h3>Where are you looking for relief?</h3>
-            <p>Pick a neighbourhood to generate safe spaces to go:</p>
-            <img src="" alt="" />
-          </aside>
+        <aside>
+          <h3>Where are you looking for relief?</h3>
+          <p>Pick a neighbourhood to generate safe spaces to go:</p>
+          <img src="" alt="" />
+          <ShopsDisplay />
+        </aside>
 
-          <div className="buttonContainer">
-            {/* <ShopsDisplay /> */}
+        <div className="buttonContainer">
 
-            <button onClick={ handleChinatown } >Chinatown</button>
-            <button>Entertainment District</button>
-            <button>Trinity Bellwoods</button>
-            <button>The Annex</button>
-            <button>Riverdale</button>
-            <button>High Park</button>
-          </div>
+          <button onClick={ handleClick } >Chinatown</button>
+          <button onClick={ handleClick } >Entertainment District</button>
+          <button onClick={ handleClick } >Trinity Bellwoods</button>
+          <button onClick={ handleClick } >The Annex</button>
+          <button onClick={ handleClick } >Riverdale</button>
+          <button onClick={ handleClick } >High Park</button>
+        </div>
 
       </main>
-    </>
+      {
+        safeSpace.map(space => {
+          return (
+            <NeighbourhoodWCs
 
+              key={space.id}
+              name={space.name}
+              address={space.street}
+              info={space.comment}
+            />  
+          )
+        })
+      }
+
+
+    </>
   )
 }
 
