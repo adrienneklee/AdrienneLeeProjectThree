@@ -93,7 +93,6 @@ function App() {
         safeSpace.map(space => {
           return (
             <NeighbourhoodWCs
-
               key={space.id}
               name={space.name}
               address={space.street}
