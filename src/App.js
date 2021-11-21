@@ -7,14 +7,37 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ShopsDisplay from './ShopsDisplay';
+import Chinatown from './Chinatown';
+import Entertainment from './Entertainment';
+import Bellwoods from './Bellwoods';
+import Annex from './Annex';
+import Riverdale from './Riverdale';
+import Parkdale from './Parkdale';
 import NeighbourhoodWCs from './NeighbourhoodWCs';
 
 function App() {
 
   const [safeSpace, setSafeSpaces] = useState([]);
 
+  // Event Handlers
+  const handleClick = () => {
+
+    console.log(`I was clicked`);
+
+    // safeSpace.map(space => {
+    //   return (
+    //     <>
+    //       setSafeSpaces({space.name})
+
+    //     </>
+    //   )
+    // })
+  }
+
+
+
   // // Chinatown button
-  // const [chinatown, setChinatown] = useState([]);
+  // const [chinatown, setChinatown] = useState(null);
 
   // // Entertainment district button
   // const [entertainment, setEntertainment] = useEffect([]);
@@ -31,36 +54,27 @@ function App() {
   // // Parkdale button
   // const [parkdale, setParkdale] = useEffect([]);
 
-   //  Event Handlers
-  const handleClick = () => {
-    console.log(`I was clicked`)
-    setSafeSpaces(!safeSpace);
 
 
-  }
 
-  useEffect(() => {
-    if (safeSpace) {
+  // const baseURL = 'https://www.refugerestrooms.org/api/v1/restrooms/by_location';
 
-    }
-
-  })
-  const baseURL = 'https://www.refugerestrooms.org/api/v1/restrooms/by_location';
-
-  useEffect(() => {
-    axios({
-      url: baseURL,
-      params: {
-        lat: '43.6509',
-        lng: '-79.3972'
-      },
-    }).then((response) => {
-      console.log(response.data)
-      setSafeSpaces(response.data);
-    });
-  }, []);
+  // useEffect(() => {
+  // axios({
+  //   url: baseURL,
+  //   params: {
+  //     lat: '43.6509',
+  //     lng: '-79.3972'
+  //   },
+  // }).then((response) => {
+  //   console.log(response.data)
+  //   // setSafeSpaces(response.data);
+  // });
+  // }, []);
 
 
+
+  
   return (
     <>
       <header className="App wrapper">
@@ -75,20 +89,30 @@ function App() {
           <h3>Where are you looking for relief?</h3>
           <p>Pick a neighbourhood to generate safe spaces to go:</p>
           <img src="" alt="" />
-          <ShopsDisplay />
+          
         </aside>
 
         <div className="buttonContainer">
 
-          <button onClick={ handleClick } >Chinatown</button>
+          <button onClick={() => setSafeSpaces()} > Chinatown </button>
+          
+
           <button onClick={ handleClick } >Entertainment District</button>
           <button onClick={ handleClick } >Trinity Bellwoods</button>
           <button onClick={ handleClick } >The Annex</button>
           <button onClick={ handleClick } >Riverdale</button>
-          <button onClick={ handleClick } >High Park</button>
+          <button onClick={handleClick} >Parkdale</button>
         </div>
 
       </main>
+      
+      <Chinatown/>
+      <Entertainment/>
+      <Bellwoods/>
+      <Annex/>
+      <Riverdale/>
+      <Parkdale/>
+      
       {
         safeSpace.map(space => {
           return (

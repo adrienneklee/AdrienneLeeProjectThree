@@ -2,28 +2,28 @@ import { useState } from "react";
 import axios from "axios";
 import NeighbourhoodWCs from './NeighbourhoodWCs';
 
-const Chinatown = () => {
+const Bellwoods = () => {
     const [shopDetails, setShopDetails] = useState([]);
 
     const baseURL = 'https://www.refugerestrooms.org/api/v1/restrooms/by_location';
 
-    const chinatownParams = { lat: '43.6509', lng: '-79.3972' };
+    const bellwoodsParams = { lat: '43.6501', lng: '-79.4171' };
 
     const button = () => {
         axios({
             url: baseURL,
-            params: chinatownParams,
+            params: bellwoodsParams,
         }).then((response) => {
-        console.log(response.data)
-        setShopDetails(response.data);
+            console.log(response.data)
+            setShopDetails(response.data);
         });
     }
-    
+
 
     return (
         <div>
-            <button onClick={button}>Chinatown</button>
-        
+            <button onClick={button}>Trinity Bellwoods</button>
+
             <h3>{ }</h3>
             {shopDetails.map(shop => {
                 return (
@@ -41,4 +41,4 @@ const Chinatown = () => {
     )
 }
 
-export default Chinatown; 
+export default Bellwoods;
