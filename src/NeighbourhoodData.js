@@ -1,33 +1,35 @@
-import neighbourhoods from "./neighbourhoods";
-import NeighbourhoodCard from "./NeighbourhoodCard";
-import GetWCs from "./GetWCs";
 
-function NeighbourhoodData() {
+// import NeighbourhoodCard from "./NeighbourhoodCard";
 
-    return (
-    <div>
-        {neighbourhoods.map(neighbourhood => (
-        <>    
-            <NeighbourhoodCard 
-            key={neighbourhood.id}
-            name={neighbourhood.name}
-            lat={neighbourhood.lat}
-            lng={neighbourhood.lng}
-            />
+
+// function NeighbourhoodData() {
+
+//     return (
+//     <div>
+//         {neighbourhoods.map(neighbourhood => (
+//         <>    
+
             
-            <GetWCs
+//             <GetWCs
+//             key={neighbourhood.id}
+//             name={neighbourhood.name}
+//             lat={neighbourhood.lat}
+//             lng={neighbourhood.lng}
+//             />
+//         </>    
+//         ))}
+    
+
+//     </div>
+//     )
+    
+// }
+
+// export default NeighbourhoodData;
+
+{/* <NeighbourhoodCard 
             key={neighbourhood.id}
             name={neighbourhood.name}
             lat={neighbourhood.lat}
             lng={neighbourhood.lng}
-            />
-        </>    
-        ))}
-    
-
-    </div>
-    )
-    
-}
-
-export default NeighbourhoodData;
+            /> */}
