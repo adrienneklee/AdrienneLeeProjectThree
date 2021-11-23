@@ -5,12 +5,10 @@ import GetWCs from "./GetWCs";
 import NeighbourhoodCard from "./NeighbourhoodCard";
 import FavSpaces from './FavSpaces';
 
-
 function App() {
 
   const [data, setData] = useState([]);
   const update = data => setData(data)
-  // console.log(update);
 
   return (
   <>  
@@ -19,6 +17,7 @@ function App() {
   <h1>Safe Spaces Toronto</h1>
   <h2>A web application that seeks to provide safe restroom access for transgender, intersex, and gender nonconforming individuals in the Toronto Area.</h2>
   <h2>Data provided by the Refuge Restrooms API.</h2>
+  
   </header>
 
   <main className="wrapper">
@@ -26,7 +25,7 @@ function App() {
       <aside>
         <h3>Where are you looking for relief?</h3>
         <p>Pick a neighbourhood to generate a list of washrooms designated as safe spaces to go:</p>
-            {/* <img src="<>" alt="" /> */}
+        <img src="/assets/divas.svg" alt="A drawing of three people chatting." />
       </aside>
       
       <div className="buttonContainer">
