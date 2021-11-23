@@ -44,12 +44,14 @@ function FavSpaces() {
         dbRef.child(removeWC).remove();    }
     
     return(
-    <section>
+    <section className="favSpacesContainer">
+        <h2>Save A Personal List of Safe Spaces:</h2>
         <form onSubmit={handleSubmit}>
-            <label htmlFor="favSpace">Add a favourite Safe Space</label>
+            <label htmlFor="favSpace" className="sr-only">Add your favourite Safe Space:</label>
             <input
                 type="text"
                 id="favSpace"
+                placeholder="Add business name here"
                 onChange={handleChange}
                 value={userInput}
             />
@@ -61,7 +63,7 @@ function FavSpaces() {
                 favourites.map((favourite) => {
                     return (
                     <li key={favourite.spaceID}>
-                        <p>{favourite.favSpace}</p>
+                        <h3>{favourite.favSpace}</h3>
                         {/* <p>{favourite.spaceName}</p>
                         <p>{favourite.spacePlace}</p>
                         <p>{favourite.spaceDes}</p> */}

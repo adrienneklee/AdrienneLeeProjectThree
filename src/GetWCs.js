@@ -11,28 +11,29 @@ const GetWCs = (props) => {
 
 const {name, lat, lng, update} = props
 
-const getData = () => {
-    axios({
-        url: baseURL,
-        params: {
-            per_page: 9,
-            unisex: true,
-            lat: lat,
-            lng: lng }
-        
-    }).then((response) => {
+    const getData = () => {
+        axios({
+            url: baseURL,
+            params: {
+                per_page: 9,
+                unisex: true,
+                lat: lat,
+                lng: lng
+            }
+        }).then((response) => {           
         update(response.data)
-    });
 
-}
+        }).catch(error => console.error('Error fetching data:', error))
+
+        }
+
 return (
-<>  
+    <>  
         <div>
-        <button onClick={getData}>{name}</button>
-    </div>
-</>
-)
-
+            <button onClick={getData}>{name}</button>
+        </div>
+    </>
+    )
 }
 
 export default GetWCs;

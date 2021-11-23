@@ -22,19 +22,14 @@ function App() {
   <h2>A web application that seeks to provide safe restroom access for transgender, intersex, and gender nonconforming individuals in the Toronto Area.</h2>
   <h2>Data provided by the Refuge Restrooms API.</h2>
   </header>
-    
-
 
   <main className="wrapper">
     <div className="flexContainer">
       <aside>
         <h3>Where are you looking for relief?</h3>
-        <p>Pick a neighbourhood to generate safe spaces to go:</p>
+        <p>Pick a neighbourhood to generate a list of washrooms designated as safe spaces to go:</p>
             {/* <img src="<>" alt="" /> */}
-
-
       </aside>
-
       
       <div className="buttonContainer">
         {neighbourhoods.map(neighbourhood => (
@@ -61,7 +56,10 @@ function App() {
       })
       }
     </section>
-    <FavSpaces />
+
+    <section>
+      <FavSpaces />
+    </section>
   </main>
   <footer className="wrapper">
     <p>Created at Juno College of Technology</p>
