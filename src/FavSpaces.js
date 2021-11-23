@@ -24,7 +24,7 @@ function FavSpaces() {
             const data = response.val();
 
             for (let property in data) {
-            console.log(data[property])
+            // console.log(data[property])
             newState.push({
                 favSpace: data[property],
                 spaceID: property,
@@ -56,18 +56,18 @@ function FavSpaces() {
                 value={userInput}
             />
 
-            <button>Add Space</button>
+            <button className="specialButton">Add Space</button>
         </form>
         <ul>
             {
                 favourites.map((favourite) => {
                     return (
                     <li key={favourite.spaceID}>
-                        <h3>{favourite.favSpace}</h3>
+                        <p>{favourite.favSpace}</p>
                         {/* <p>{favourite.spaceName}</p>
                         <p>{favourite.spacePlace}</p>
                         <p>{favourite.spaceDes}</p> */}
-                        <button onClick={ () => removeSpace(favourite.spaceID)}>Remove Space</button>
+                        <button onClick={ () => removeSpace(favourite.spaceID)}className="specialButton">Remove Space</button>
                     </li>
                     )
                 })

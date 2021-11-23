@@ -6,13 +6,11 @@ import NeighbourhoodCard from "./NeighbourhoodCard";
 import FavSpaces from './FavSpaces';
 
 
-
-
 function App() {
 
   const [data, setData] = useState([]);
   const update = data => setData(data)
-  console.log(update);
+  // console.log(update);
 
   return (
   <>  
