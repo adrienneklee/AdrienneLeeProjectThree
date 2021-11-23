@@ -3,6 +3,7 @@ import neighbourhoods from "./neighbourhoods";
 import { useState } from "react";
 import GetWCs from "./GetWCs";
 import NeighbourhoodCard from "./NeighbourhoodCard";
+import FavSpaces from './FavSpaces';
 
 
 
@@ -29,7 +30,8 @@ function App() {
       <aside>
         <h3>Where are you looking for relief?</h3>
         <p>Pick a neighbourhood to generate safe spaces to go:</p>
-            <img src="<>" alt="" />
+            {/* <img src="<>" alt="" /> */}
+
 
       </aside>
 
@@ -59,6 +61,7 @@ function App() {
       })
       }
     </section>
+    <FavSpaces />
   </main>
   <footer className="wrapper">
     <p>Created at Juno College of Technology</p>
