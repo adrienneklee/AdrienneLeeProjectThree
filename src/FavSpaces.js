@@ -28,9 +28,7 @@ function FavSpaces() {
             newState.push({
                 favSpace: data[property],
                 spaceID: property,
-                // spaceName: data[property].name,
-                // spacePlace: data[property].address,
-                // spaceDes: data[property].comment
+
             })
             }
 
