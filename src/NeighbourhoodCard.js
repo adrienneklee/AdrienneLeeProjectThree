@@ -1,12 +1,12 @@
 function NeighbourhoodCard(props) {
     console.log(props)
     return (
-    <div>    
-        <h3>{props.name}</h3>
-        <p>{props.address}</p>
-        <p>{props.info}</p>
+    <ul className="cardContainer">    
+        <li><h3>{props.name}</h3></li>
+        <li><p>{props.address}</p></li>
+        <li><p className="info">{props.info}</p></li>
         
-    </div>
+    </ul>
     )
 }
 

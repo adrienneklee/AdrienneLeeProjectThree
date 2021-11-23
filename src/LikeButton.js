@@ -1,17 +1,17 @@
-import { useState } from "react"
+// import { useState } from "react"
 
-const LikeButton = () => {
-    const [likes, setlikes] = useState(null);
+// const LikeButton = () => {
+//     const [likes, setlikes] = useState(null);
 
-    const handleLikes = () => {
-        setlikes(!likes);
-    }
+//     const handleLikes = () => {
+//         setlikes(!likes);
+//     }
 
-    return (
-        <div>
-            <button onClick={handleLikes}>Like</button>
-        </div>
-    )
-}
+//     return (
+//         <div>
+//             <button onClick={handleLikes}>Like</button>
+//         </div>
+//     )
+// }
 
-export default LikeButton;
+// export default LikeButton;

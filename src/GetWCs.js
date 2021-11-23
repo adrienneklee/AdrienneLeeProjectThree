@@ -1,11 +1,14 @@
+// Axios API call to Refuge Washroom API
+// Required parameters (Latitude and Longitude) passed through props and saved in reusable variable
+// Event Handler updates data to call on App.js page to display results
+
 import axios from "axios";
-import NeighbourhoodCard from "./NeighbourhoodCard";
+import './App.css';
 
 const baseURL = 'https://www.refugerestrooms.org/api/v1/restrooms/by_location';
 
-
 const GetWCs = (props) => {
-// const [shopDetails, setShopDetails] = useState([]);
+
 const {name, lat, lng, update} = props
 
 const getData = () => {
@@ -18,33 +21,15 @@ const getData = () => {
             lng: lng }
         
     }).then((response) => {
-        // setShopDetails(response.data);
         update(response.data)
     });
 
 }
 return (
-<>    
-    <section>
+<>  
+        <div>
         <button onClick={getData}>{name}</button>
-    </section>
-
-    {/* <section>
-        {shopDetails.map(shop => {
-            return (
-                <NeighbourhoodCard
-                    key={shop.id}
-                    name={shop.name}
-                    address={shop.street}
-                    info={shop.comment}
-                />
-
-            )
-
-        })
-
-        }
-    </section> */}
+    </div>
 </>
 )
 

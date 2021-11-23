@@ -1,4 +1,4 @@
-// Datafile containing neighbourhood data
+// Data file containing neighbourhood data
 
 const neighbourhoods = [
     {

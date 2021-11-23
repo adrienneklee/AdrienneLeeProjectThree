@@ -1,10 +1,5 @@
-// * Hardcoded array of object Name, Lat, Long 
-    // * const neighbourhoods = [{ name: "", lat: "", long: ""}]
-// * map through 'neighbourhoods' array
-// * and for each item render a Neighbourhoods component and pass neighbourhood info as a prop
-
+import './App.css';
 import neighbourhoods from "./neighbourhoods";
-// import NeighbourhoodData from "./NeighbourhoodData";
 import { useState } from "react";
 import GetWCs from "./GetWCs";
 import NeighbourhoodCard from "./NeighbourhoodCard";
@@ -18,27 +13,40 @@ function App() {
   const update = data => setData(data)
   console.log(update);
 
-    return (
-    <>  
-    <header>
-    <h1>Safe Spaces Toronto</h1>
+  return (
+  <>  
+  <header className="wrapper">
 
-    </header>
+  <h1>Safe Spaces Toronto</h1>
+  <h2>A web application that seeks to provide safe restroom access for transgender, intersex, and gender nonconforming individuals in the Toronto Area.</h2>
+  <h2>Data provided by the Refuge Restrooms API.</h2>
+  </header>
+    
 
-      <div>
+
+  <main className="wrapper">
+    <div className="flexContainer">
+      <aside>
+        <h3>Where are you looking for relief?</h3>
+        <p>Pick a neighbourhood to generate safe spaces to go:</p>
+            <img src="<>" alt="" />
+
+      </aside>
+
+      
+      <div className="buttonContainer">
         {neighbourhoods.map(neighbourhood => (
-            <GetWCs
-              key={neighbourhood.id}
-              name={neighbourhood.name}
-              lat={neighbourhood.lat}
-              lng={neighbourhood.lng}
-              update={update}
-            />
+          <GetWCs
+            key={neighbourhood.id}
+            name={neighbourhood.name}
+            lat={neighbourhood.lat}
+            lng={neighbourhood.lng}
+            update={update}
+          />
         ))}
-
-
       </div>
-
+    </div>
+    <section className="listContainer">
       {data.map(shop => {
         return (
           <NeighbourhoodCard
@@ -47,15 +55,16 @@ function App() {
           address={shop.street}
           info={shop.comment}
           />
-          
-          
         )
       })
-
       }
-    </>  
+    </section>
+  </main>
+  <footer className="wrapper">
+    <p>Created at Juno College of Technology</p>
+  </footer>
+  </>  
     )
-
 
 }
 
