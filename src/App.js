@@ -14,7 +14,6 @@ function App() {
  return (
   <>  
   <header className="wrapper">
-  <Geolocation/>
   <h1>Safe Spaces Toronto</h1>
   <h2>A web application that seeks to provide safe restroom access for transgender, intersex, and gender nonconforming individuals in the Toronto Area.</h2>
   <h2>Data provided by the Refuge Restrooms API.</h2>
@@ -43,7 +42,6 @@ function App() {
     </div>
     <section className="listContainer">
       {data.map(shop => {
-
         return (
           <NeighbourhoodCard
           key={shop.id}
@@ -58,6 +56,7 @@ function App() {
 
     <section>
       <FavSpaces />
+      <Geolocation />
     </section>
   </main>
 
