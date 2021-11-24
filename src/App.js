@@ -4,16 +4,17 @@ import { useState } from "react";
 import GetWCs from "./GetWCs";
 import NeighbourhoodCard from "./NeighbourhoodCard";
 import FavSpaces from './FavSpaces';
+import Geolocation from './Geolocation';
 
 function App() {
 
   const [data, setData] = useState([]);
   const update = data => setData(data)
 
-  return (
+ return (
   <>  
   <header className="wrapper">
-
+  <Geolocation/>
   <h1>Safe Spaces Toronto</h1>
   <h2>A web application that seeks to provide safe restroom access for transgender, intersex, and gender nonconforming individuals in the Toronto Area.</h2>
   <h2>Data provided by the Refuge Restrooms API.</h2>
@@ -42,6 +43,7 @@ function App() {
     </div>
     <section className="listContainer">
       {data.map(shop => {
+
         return (
           <NeighbourhoodCard
           key={shop.id}
@@ -58,12 +60,13 @@ function App() {
       <FavSpaces />
     </section>
   </main>
+
   <footer className="wrapper">
     <p>Created at Juno College of Technology</p>
   </footer>
+
   </>  
     )
-
 }
 
 export default App;

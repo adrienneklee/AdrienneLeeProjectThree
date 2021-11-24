@@ -1,5 +1,6 @@
+// Component to display each Neighbourhood Results
 function NeighbourhoodCard(props) {
-    console.log(props)
+
     return (
     <ul className="cardContainer">    
         <li><h3>{props.name}</h3></li>
