@@ -22,11 +22,13 @@ function Geolocation () {
             // console.log(result.state);
         } else if (result.state === 'denied') {
         }
+
+       
         result.onchange = function () {
             // console.log(result.state)
         };
         });
-
+        
         } else {
             alert('sorry not available')
         };
@@ -62,14 +64,13 @@ function success(pos) {
 function errors(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
 }
-
     return(
-        <div>
+        <div className="userContainer">
             <h2>Your Closest Safe Space is:</h2>
             {location.map(shop => {
                 return (
                     <NeighbourhoodCard
-                    key={shop.id}
+                    key={shop.id}                    
                     name={shop.name}
                     address={shop.street}
                     info={shop.comment}/>

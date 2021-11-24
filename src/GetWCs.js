@@ -24,11 +24,9 @@ const getData = async () => {
 }
 
 return (
-    <>  
-        <div>
-            <button onClick={getData}>{name}</button>
-        </div>
-    </>
+    <div>
+        <button onClick={getData}>{name}</button>
+    </div>
     )
 }
 

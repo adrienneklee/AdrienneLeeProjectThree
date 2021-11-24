@@ -14,32 +14,42 @@ function App() {
  return (
   <>  
   <header className="wrapper">
-  <h1>Safe Spaces Toronto</h1>
-  <h2>A web application that seeks to provide safe restroom access for transgender, intersex, and gender nonconforming individuals in the Toronto Area.</h2>
-  <h2>Data provided by the Refuge Restrooms API.</h2>
-  
+
+    <img src="/assets/sitting.svg" alt="A drawing of a person sitting." className="headerPic"/>
+    <h1>Safe Spaces</h1>
+ 
+    <h2>A web application that seeks to provide safe restroom access for transgender, intersex, and gender nonconforming individuals in the Toronto Area.</h2>
+
+    <h3>Data provided by the Refuge Restrooms API.</h3>
+
   </header>
 
   <main className="wrapper">
-    <div className="flexContainer">
+
+    <section className="flexContainer">
+
       <aside>
         <h3>Where are you looking for relief?</h3>
-        <p>Pick a neighbourhood to generate a list of washrooms designated as safe spaces to go:</p>
-        <img src="/assets/divas.svg" alt="A drawing of three people chatting." />
+        <p>Allow Safe Spaces to access your location to find a safe restroom near you, or pick a neighbourhood to generate a list of restrooms in that area:</p>
+        <img src="/assets/pregnant.svg" alt="A drawing of a pregnant person sprinting." />
       </aside>
-      
-      <div className="buttonContainer">
-        {neighbourhoods.map(neighbourhood => (
-          <GetWCs
-            key={neighbourhood.id}
-            name={neighbourhood.name}
-            lat={neighbourhood.lat}
-            lng={neighbourhood.lng}
-            update={update}
-          />
-        ))}
-      </div>
+
+      <Geolocation />
+
+    </section>
+
+    <div className="buttonContainer">
+      {neighbourhoods.map(neighbourhood => (
+        <GetWCs
+          key={neighbourhood.id}
+          name={neighbourhood.name}
+          lat={neighbourhood.lat}
+          lng={neighbourhood.lng}
+          update={update}
+        />
+      ))}
     </div>
+
     <section className="listContainer">
       {data.map(shop => {
         return (
@@ -54,9 +64,11 @@ function App() {
       }
     </section>
 
-    <section>
+    <section className="favContainer">
+      <img src="/assets/divas.svg" alt="A drawing of three people chatting." className="favPic"/>
       <FavSpaces />
-      <Geolocation />
+
+
     </section>
   </main>
 

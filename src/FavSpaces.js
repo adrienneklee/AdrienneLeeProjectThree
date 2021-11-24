@@ -43,7 +43,7 @@ function FavSpaces() {
     
     return(
     <section className="favSpacesContainer">
-        <h2>Save A Personal List of Safe Spaces:</h2>
+        <h2>Save A Personal List of Safe Spaces to come back to:</h2>
         <form onSubmit={handleSubmit}>
             <label htmlFor="favSpace" className="sr-only">Add your favourite Safe Space:</label>
             <input
