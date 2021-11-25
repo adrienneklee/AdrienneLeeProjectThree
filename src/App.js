@@ -53,14 +53,14 @@ function App() {
     <section className="listContainer">
       {data.map(shop => {
         return (
-          <NeighbourhoodCard
-          key={shop.id}
-          name={shop.name}
-          address={shop.street}
-          info={shop.comment}
-          />
-        )
-      })
+            <NeighbourhoodCard
+            key={shop.id}
+            name={shop.name}
+            address={shop.street}
+            info={shop.comment}
+            />
+          )
+        })
       }
     </section>
 

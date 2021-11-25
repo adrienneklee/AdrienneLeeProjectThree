@@ -274,6 +274,10 @@ footer p {
 }
 
 @media (max-width: 450px) {
+  aside p {
+    text-align: center;
+  }
+  
   .listContainer {
     grid-template-columns: 1fr;
   }

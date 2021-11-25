@@ -1,9 +1,10 @@
 // Geolocation function includes STATE that updates as the user grants permission
 // if-else statement asks permission from the user if location can be accessed
-// if permission is granted, Success function is run
-// Latitude and Longitude are saved in variables
-// user coordinates are used as params for API call
-// Return passes props to Neighbourhood Card 
+// useEffect is used to ensure permission call is only requested once
+// If permission is granted, Success function is run
+// User's Latitude and Longitude are saved in variables
+// User coordinates are used as params for API call
+// Return passes props to NeighbourhoodCard 
 // Geolocation is rendered to App.js 
 
 
@@ -33,7 +34,7 @@ function Geolocation () {
                     } else if (result.state === 'denied') {
                         alert('Please share your location for Safe Spaces near you!')
                 
-                    }  
+                    }   
 
                     result.onchange = function () {
 
@@ -43,7 +44,8 @@ function Geolocation () {
         } else {
             alert('Sorry this function is not available without your location.  Please select a neighbourhood for Safe Spaces.')
         };
-    }, [])
+    }, []);
+
     function success(pos) {
         const crd = pos.coords;
 

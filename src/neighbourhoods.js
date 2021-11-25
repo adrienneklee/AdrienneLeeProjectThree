@@ -37,7 +37,6 @@ const neighbourhoods = [
         lat: '43.6790',
         lng: '-79.3449'
     }
-
 ];
 
 export default neighbourhoods; 
