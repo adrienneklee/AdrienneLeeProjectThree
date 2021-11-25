@@ -1,5 +1,15 @@
+// Geolocation function includes STATE that updates as the user grants permission
+// if-else statement asks permission from the user if location can be accessed
+// if permission is granted, Success function is run
+// Latitude and Longitude are saved in variables
+// user coordinates are used as params for API call
+// Return passes props to Neighbourhood Card 
+// Geolocation is rendered to App.js 
+
+
+
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NeighbourhoodCard from "./NeighbourhoodCard";
 
 const options = {
@@ -9,61 +19,57 @@ const options = {
 
 function Geolocation () {
     const [location, setLocation] = useState([]);
-    
+    useEffect(()=> {
         if (navigator.geolocation) {
             navigator.permissions
                 .query({ name: 'geolocation' })
                 .then(function (result) {
-        if (result.state === 'granted') {
-            // console.log(result.state);
-            navigator.geolocation.getCurrentPosition(success);
-        } else if (result.state === 'prompt') {
-            navigator.geolocation.getCurrentPosition(success, errors, options)
-            // console.log(result.state);
-        } else if (result.state === 'denied') {
-        }
+                    if (result.state === 'granted') {                       
+                        navigator.geolocation.getCurrentPosition(success);
+                    
+                    } else if (result.state === 'prompt') {
+                        navigator.geolocation.getCurrentPosition(success, errors, options)
+            
+                    } else if (result.state === 'denied') {
+                        alert('Please share your location for Safe Spaces near you!')
+                
+                    }  
 
-       
-        result.onchange = function () {
-            // console.log(result.state)
-        };
-        });
-        
+                    result.onchange = function () {
+
+                    };
+                });
+            
         } else {
-            alert('sorry not available')
+            alert('Sorry this function is not available without your location.  Please select a neighbourhood for Safe Spaces.')
         };
+    }, [])
+    function success(pos) {
+        const crd = pos.coords;
 
-function success(pos) {
-    const crd = pos.coords;
-    // console.log(`Your current position is:`);
-    // console.log(`Latitude: ${crd.latitude}`);
-    // console.log(`Longitude: ${crd.longitude}`)
-    const userLat = crd.latitude;
-    const userLng = crd.longitude;
-    // console.log(`this is lat`, userLat);
-    // console.log(`this is long`, userLng);
+        const userLat = crd.latitude;
+        const userLng = crd.longitude;
+        
+        const baseURL = 'https://www.refugerestrooms.org/api/v1/restrooms/by_location';
 
-    const baseURL = 'https://www.refugerestrooms.org/api/v1/restrooms/by_location';
+        axios({
+            url: baseURL,
+            params: {
+                per_page: 1,
+                unisex: true,
+                lat: userLat,
+                lng: userLng
+            }
+        }).then((response) => {
+            setLocation(response.data)
+        }).catch(error => console.error('Error fetching data:', error))
 
-    // const userData = async () => {
-    axios({
-        url: baseURL,
-        params: {
-            per_page: 1,
-            unisex: true,
-            lat: userLat,
-            lng: userLng
-        }
-    }).then((response) => {
-        // console.log(response.data[0].name)
-        setLocation(response.data)
-    }).catch(error => console.error('Error fetching data:', error))
-    // }
-}
+    }
 
-function errors(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
-}
+    function errors(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
     return(
         <div className="userContainer">
             <h2>Your Closest Safe Space is:</h2>
@@ -82,5 +88,3 @@ function errors(err) {
 };
 
 export default Geolocation;
-
-    

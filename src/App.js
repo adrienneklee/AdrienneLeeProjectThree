@@ -11,13 +11,13 @@ function App() {
   const [data, setData] = useState([]);
   const update = data => setData(data)
 
- return (
+  return (
   <>  
   <header className="wrapper">
 
     <img src="/assets/sitting.svg" alt="A drawing of a person sitting." className="headerPic"/>
     <h1>Safe Spaces</h1>
- 
+
     <h2>A web application that seeks to provide safe restroom access for transgender, intersex, and gender nonconforming individuals in the Toronto Area.</h2>
 
     <h3>Data provided by the Refuge Restrooms API.</h3>
@@ -66,10 +66,10 @@ function App() {
 
     <section className="favContainer">
       <img src="/assets/divas.svg" alt="A drawing of three people chatting." className="favPic"/>
+      
       <FavSpaces />
-
-
     </section>
+
   </main>
 
   <footer className="wrapper">
@@ -77,7 +77,7 @@ function App() {
   </footer>
 
   </>  
-    )
+  )
 }
 
 export default App;

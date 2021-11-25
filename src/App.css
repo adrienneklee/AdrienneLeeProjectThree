@@ -215,11 +215,11 @@ footer p {
 @media (max-width: 1050px) {
   .buttonContainer {
   grid-template-columns: 1fr 1fr;
-}
+  }
 
 .cardContainer {
   height: 350px;
-}
+  }
   
 }
 
@@ -273,14 +273,13 @@ footer p {
   }  
 }
 
-@media (max-width: 420px) {
+@media (max-width: 450px) {
   .listContainer {
     grid-template-columns: 1fr;
   }
 
   .cardContainer {
     width: 100%;
-  }
-  
+  } 
 }
 

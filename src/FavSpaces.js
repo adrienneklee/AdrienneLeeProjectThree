@@ -23,14 +23,14 @@ function FavSpaces() {
             const newState = [];
             const data = response.val();
 
-            for (let property in data) {
-            // console.log(data[property])
-            newState.push({
-                favSpace: data[property],
-                spaceID: property,
+                for (let property in data) {
 
-            })
-            }
+                    newState.push({
+                        favSpace: data[property],
+                        spaceID: property,
+
+                    })
+                }
 
             setFavourites(newState);
 
@@ -39,11 +39,14 @@ function FavSpaces() {
 
     const removeSpace = (removeWC) => {
         const dbRef = firebase.database().ref();
-        dbRef.child(removeWC).remove();    }
+        dbRef.child(removeWC).remove();
+    }
     
     return(
     <section className="favSpacesContainer">
+
         <h2>Save A Personal List of Safe Spaces to come back to:</h2>
+
         <form onSubmit={handleSubmit}>
             <label htmlFor="favSpace" className="sr-only">Add your favourite Safe Space:</label>
             <input
@@ -56,22 +59,21 @@ function FavSpaces() {
 
             <button className="specialButton">Add Space</button>
         </form>
+
         <ul>
             {
                 favourites.map((favourite) => {
                     return (
                     <li key={favourite.spaceID}>
+
                         <p>{favourite.favSpace}</p>
-                        {/* <p>{favourite.spaceName}</p>
-                        <p>{favourite.spacePlace}</p>
-                        <p>{favourite.spaceDes}</p> */}
+                        
                         <button onClick={ () => removeSpace(favourite.spaceID)}className="specialButton">Remove Space</button>
                     </li>
                     )
                 })
             }
         </ul>
-
 
     </section>
     )
