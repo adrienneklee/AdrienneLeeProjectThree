@@ -1,10 +1,10 @@
 import './App.css';
 import neighbourhoods from "./neighbourhoods";
 import { useState } from "react";
-import GetWCs from "./GetWCs";
-import NeighbourhoodCard from "./NeighbourhoodCard";
-import FavSpaces from './FavSpaces';
-import Geolocation from './Geolocation';
+import GetWCs from "./Components/GetWCs";
+import NeighbourhoodCard from "./Components/NeighbourhoodCard";
+import FavSpaces from './Components/FavSpaces';
+import Geolocation from './Components/Geolocation';
 
 function App() {
 

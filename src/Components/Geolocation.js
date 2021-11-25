@@ -7,8 +7,6 @@
 // Return passes props to NeighbourhoodCard 
 // Geolocation is rendered to App.js 
 
-
-
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NeighbourhoodCard from "./NeighbourhoodCard";
