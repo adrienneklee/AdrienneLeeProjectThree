@@ -274,8 +274,10 @@ footer p {
 }
 
 @media (max-width: 450px) {
+  aside h3,
   aside p {
-    text-align: center;
+    text-align: left;
+    margin-bottom: 10px;
   }
   
   .listContainer {

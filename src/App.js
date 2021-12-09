@@ -30,7 +30,7 @@ function App() {
 
       <aside>
         <h3>Where are you looking for relief?</h3>
-        <p>Allow Safe Spaces to access your location to find a safe restroom near you, or pick a neighbourhood to generate a list of restrooms in that area:</p>
+        <p>Turn on location services for your browser and allow Safe Spaces to access your location to find a safe restroom near you.  Or pick a neighbourhood to generate a list of restrooms in that area:</p>
         <img src="/assets/pregnant.svg" alt="A drawing of a pregnant person sprinting." />
       </aside>
 
