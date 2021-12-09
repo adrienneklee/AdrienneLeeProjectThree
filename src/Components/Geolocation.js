@@ -20,28 +20,9 @@ function Geolocation () {
     const [location, setLocation] = useState([]);
     useEffect(()=> {
         if (navigator.geolocation) {
-        // Note commented out code is full function for non iOS users, not compatible with Safari
-        
-            // navigator.permissions
-            //     .query({ name: 'geolocation' })
-            //     .then(function (result) {
-            //         if (result.state === 'granted') {                       
-            //             navigator.geolocation.getCurrentPosition(success);
-                    
-            //         } else if (result.state === 'prompt') {
 
-                        navigator.geolocation.getCurrentPosition(success, errors, options)
-                        console.log(`success message:`, success)
-            
-            //         } else if (result.state === 'denied') {
-            //             alert('Please share your location for Safe Spaces near you!')
-                
-            //         }   
-
-                    // result.onchange = function () {
-
-                    // };
-            //     });
+        navigator.geolocation.getCurrentPosition(success, errors, options)
+        console.log(`success message:`, success)
 
         } else {
             alert('Sorry this function is not available without your location.  Please select a neighbourhood for Safe Spaces.')
