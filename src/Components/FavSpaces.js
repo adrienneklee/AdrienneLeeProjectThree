@@ -1,4 +1,7 @@
-import firebase from '../firebase';
+// src/Components/FavSpaces.js
+
+import { database } from '../firebase/config';
+import { ref, onValue, push, remove } from 'firebase/database';
 import { useState, useEffect } from 'react';
 
 function FavSpaces() {
@@ -7,76 +10,73 @@ function FavSpaces() {
 
     const handleChange = (event) => {
         setUserInput(event.target.value);
-    }
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        
-        const dbRef = firebase.database().ref();
-        dbRef.push(userInput);
+        if (userInput.trim() === '') return;
+
+        const dbRef = ref(database, 'favourites');
+        push(dbRef, userInput);
         setUserInput('');
-    }
+    };
 
     useEffect(() => {
-        const dbRef = firebase.database().ref();
-        dbRef.on('value', (response) => {
+        const dbRef = ref(database, 'favourites');
+
+        onValue(dbRef, (snapshot) => {
+            const data = snapshot.val();
             const newState = [];
-            const data = response.val();
 
-                for (let property in data) {
-
-                    newState.push({
-                        favSpace: data[property],
-                        spaceID: property,
-
-                    })
-                }
+            for (let key in data) {
+                newState.push({
+                    favSpace: data[key],
+                    spaceID: key
+                });
+            }
 
             setFavourites(newState);
-
-        })
-    }, [])
+        });
+    }, []);
 
     const removeSpace = (removeWC) => {
-        const dbRef = firebase.database().ref();
-        dbRef.child(removeWC).remove();
-    }
-    
-    return(
-    <section className="favSpacesContainer">
+        const dbRef = ref(database, `favourites/${removeWC}`);
+        remove(dbRef);
+    };
 
-        <h2>Save A Personal List of Safe Spaces to come back to:</h2>
+    return (
+        <section className="favSpacesContainer">
+            <h2>Save A Personal List of Safe Spaces to come back to:</h2>
 
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="favSpace" className="sr-only">Add your favourite Safe Space:</label>
-            <input
-                type="text"
-                id="favSpace"
-                placeholder="Add business name here"
-                onChange={handleChange}
-                value={userInput}
-            />
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="favSpace" className="sr-only">
+                    Add your favourite Safe Space:
+                </label>
+                <input
+                    type="text"
+                    id="favSpace"
+                    placeholder="Add business name here"
+                    onChange={handleChange}
+                    value={userInput}
+                />
+                <button className="specialButton">Add Space</button>
+            </form>
 
-            <button className="specialButton">Add Space</button>
-        </form>
-
-        <ul>
-            {
-                favourites.map((favourite) => {
-                    return (
+            <ul>
+                {favourites.map((favourite) => (
                     <li key={favourite.spaceID}>
-
                         <p>{favourite.favSpace}</p>
-                        
-                        <button onClick={ () => removeSpace(favourite.spaceID)}className="specialButton">Remove Space</button>
+                        <button
+                            onClick={() => removeSpace(favourite.spaceID)}
+                            className="specialButton"
+                        >
+                            Remove Space
+                        </button>
                     </li>
-                    )
-                })
-            }
-        </ul>
-
-    </section>
-    )
+                ))}
+            </ul>
+        </section>
+    );
 }
 
 export default FavSpaces;

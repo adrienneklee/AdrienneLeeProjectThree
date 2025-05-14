@@ -3,7 +3,7 @@ import neighbourhoods from "./neighbourhoods";
 import { useState } from "react";
 import GetWCs from "./Components/GetWCs";
 import NeighbourhoodCard from "./Components/NeighbourhoodCard";
-import FavSpaces from './Components/FavSpaces';
+// import FavSpaces from './Components/FavSpaces';
 import Geolocation from './Components/Geolocation';
 
 function App() {
@@ -67,7 +67,7 @@ function App() {
     <section className="favContainer">
       <img src="/assets/divas.svg" alt="A drawing of three people chatting." className="favPic"/>
       
-      <FavSpaces />
+      {/* <FavSpaces /> */}
     </section>
 
   </main>
